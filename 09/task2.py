@@ -4,7 +4,6 @@ import pygame
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
-FPS = 60
 WIDTH = HEIGHT = 1000
 ROWS = COLS = 100
 PIXEL_SIZE = WIDTH // ROWS
@@ -18,16 +17,6 @@ def init_grid(rows, cols):
         grid.append([])
         for _ in range(cols):
             grid[i].append(WHITE)
-
-    #with open("input.txt", "r") as f:
-    #    map = [[int(i) for i in line[:-1]] for line in f.readlines()]
-
-    #for i in range(rows):
-    #    for j in range(cols):
-    #        try:
-    #            grid[i][j] = 0 if map[i][j] != 9 else 1 
-    #        except:
-    #            pass
 
     return grid
 
