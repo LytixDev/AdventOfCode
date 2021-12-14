@@ -1,0 +1,33 @@
+with open("input.txt") as f:
+    dots, folds = f.read().split("\n\n")
+    dots = {tuple(map(int , dot.strip().split(","))) for dot in dots.strip().split("\n")}
+    folds = [line.strip().split("=") for line in folds.strip().split("\n")]
+    folds = [(s[-1], int(v)) for s, v in folds]
+
+def fold(dots,orient,pos):
+    tofold = {(x,y) for x, y in dots if orient == 'x' and x > pos or orient == 'y' and y > pos}
+    for x, y in tofold:
+        if orient == 'x':
+            dots.remove((x,y))
+            dots.add((pos - (x-pos), y))
+        elif orient == 'y':
+            dots.remove((x,y))
+            dots.add((x, pos - (y-pos)))
+    return
+
+for f in folds:
+    fold(dots, *f)
+
+sum = 0
+xmax = max(x for x, y in dots)
+ymax = max(y for x, y in dots)
+
+for y in range(ymax + 1):
+    for x in range(xmax + 1):
+        if (x, y) in dots:
+            sum += 1
+        print("#" if (x, y) in dots else ".",end="")
+    print()
+
+print(sum)
+
