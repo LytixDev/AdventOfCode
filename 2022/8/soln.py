@@ -4,9 +4,8 @@ X = [list(line.strip("\n")) for line in open("input.txt").readlines()]
 def is_visible(x, y, x_parent, y_parent, dir):
     if x > len(X) - 1 or y > len(X[0]) - 1 or x < 0 or y < 0:
         return True
-    if x_parent is not None:
-        if X[x][y] >= X[x_parent][y_parent]:
-            return False
+    if X[x][y] >= X[x_parent][y_parent]:
+        return False
 
     if dir == "top":
         return is_visible(x - 1, y, x_parent, y_parent, dir)
@@ -21,9 +20,8 @@ def is_visible(x, y, x_parent, y_parent, dir):
 def is_visible_p2(x, y, x_parent, y_parent, dir, depth):
     if x > len(X) - 1 or y > len(X[0]) - 1 or x < 0 or y < 0:
         return depth
-    if x_parent is not None:
-        if X[x][y] >= X[x_parent][y_parent]:
-            return depth + 1
+    if X[x][y] >= X[x_parent][y_parent]:
+        return depth + 1
 
     if dir == "top":
         return is_visible_p2(x - 1, y, x_parent, y_parent, dir, depth + 1) 
