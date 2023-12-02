@@ -5,6 +5,7 @@ with open("input") as f:
 total = 0
 for line in l:
     # slow but works
+    # necessary because oneight can not be replaced into 1ight
     line = (
         line.replace("one", "one1one")
         .replace("two", "two2two")
