@@ -2,6 +2,8 @@ with open("input_proper") as f:
     lines = [l.strip() for l in f.readlines()]
 
 seeds = list(int(s) for s in lines.pop(0).split(": ")[1].split())
+seeds = list(zip(seeds[::2], seeds[1::2]))
+
 
 maps = []
 this = []
@@ -23,9 +25,6 @@ def get_loc(loc, mapings):
         if loc >= source and loc < source + range_len:
             return loc + offset
     return loc
-
-
-seeds = list(zip(seeds[::2], seeds[1::2]))
 
 
 def loc_in_seeds(loc):
